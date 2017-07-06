@@ -42,11 +42,12 @@
                 alert("이름써라!!!!!!어!!??!!??!?!");
                 $("#name").focus();
                 return;
-            } else if ($("#msg").val() == "") {
-                alert("내용쓰자?!!!!어!?!?!?!");
-                $("#msg").focus();
-                return;
             }
+//            else if ($("#msg").val() == "") {
+//                alert("내용쓰자?!!!!어!?!?!?!");
+//                $("#msg").focus();
+//                return;
+//            }
 
             chat.emit("chat message", {
                 name: $("#name").val(),
