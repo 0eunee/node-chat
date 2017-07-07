@@ -12,6 +12,7 @@ var chat = io.on('connection', function(socket) {
 
         socket.name = data.name;
         socket.msg = data.msg;
+        socket.sendTime = data.sendTime;
 
         io.emit('chat message', data);
     });
