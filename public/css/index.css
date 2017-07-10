@@ -1,6 +1,6 @@
 .col-sm-1 { padding-left: 5px; }
 #conn-btn, #name-mod-btn { width: 100%; }
-button[type='submit'] { display: none; }
+button[type='submit'] { /*display: none;*/ }
 #name-mod-btn-div { display: none; }
 #users { border: 1px dashed lightgray; padding: 5px; }
 #chat { padding: 10px 5px 5px 5px; }
