@@ -97,13 +97,14 @@ $(function () {
                 msg: $("#msg").val(),
                 sendTime: curTime
             });
+            $("#msg").val("").focus();
+            return false;
         }
 
     });
     socket.on("chat message", function (data) {
         var html = "<p style='margin-bottom: 0px;'>" + data.name + " : " + data.msg + "<p>" + data.sendTime + "</p></p>";
         $("#chat").prepend(html);
-        $("#msg").val("").focus();
     });
 });
 
