@@ -1,6 +1,9 @@
 $(function () {
     var socket = io();
 
+    // 사용자가 알림 권한 설정
+    // if (window.Notification) { Notification.requestPermission(); }
+
     socket.on('connect', function () {
         socket.emit('current user', function () {});
     });
@@ -105,8 +108,24 @@ $(function () {
     socket.on("chat message", function (data) {
         var html = "<p style='margin-bottom: 0px;'>" + data.name + " : " + data.msg + "<p>" + data.sendTime + "</p></p>";
         $("#chat").prepend(html);
+        // setTimeout(function () { notify(); }, 1000);
     });
 });
+
+function notify() {
+    if (Notification.permission !== 'granted') {
+        alert('notification is disabled');
+    } else {
+        var notification = new Notification('Notification title', {
+            icon : '',
+            body: 'Notification text'
+        });
+
+        notification.onclick = function () {
+          swal('눌렀눼');
+        };
+    }
+}
 
 function addZero(c) {
     var cString = c.toString();

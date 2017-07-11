@@ -1,4 +1,4 @@
-*.workspace.xml
+.idea
 
 # Created by https://www.gitignore.io/api/node
 

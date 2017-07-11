@@ -5,7 +5,6 @@ var io = require('socket.io')(server);
 var redis = require('redis')
     , mongoose = require('mongoose')
     , path = require('path');
-    //, swal = require('sweetalert')
 
 app.use(express.static('public'));
 app.get('/', function (req, res) {
