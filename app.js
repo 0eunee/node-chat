@@ -3,8 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var redis = require('redis')
-    , mongoose = require('mongoose')
-    , path = require('path');
+    , mongoose = require('mongoose');
 
 app.use(express.static('public'));
 app.get('/', function (req, res) {
