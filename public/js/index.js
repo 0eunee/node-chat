@@ -118,7 +118,8 @@ $(function () {
             socket.emit("chat message", {
                 name: $("#name").val(),
                 msg: $("#msg").val(),
-                sendTime: curTime
+                sendTime: curTime,
+                picColor: picColor
             });
             $("#msg").val("").focus();
             return false;
@@ -126,8 +127,8 @@ $(function () {
 
     });
     socket.on("chat message", function (data) {
-        if (picColor) {
-            var html = "<p style='margin-bottom: 0px;'>" + data.name + " : <span style='color: " + picColor + ";'>" + data.msg + "</span><p>" + data.sendTime + "</p></p>";
+        if (data.picColor) {
+            var html = "<p style='margin-bottom: 0px;'>" + data.name + " : <span style='color: " + data.picColor + ";'>" + data.msg + "</span><p>" + data.sendTime + "</p></p>";
         } else {
             var html = "<p style='margin-bottom: 0px;'>" + data.name + " : " + data.msg + "<p>" + data.sendTime + "</p></p>";
         }
