@@ -118,14 +118,21 @@ $(function () {
 
             if ($("#msg").val() === '/close') {
                 window.open('about:blank','_self').close();
-            } else {
-                socket.emit("chat message", {
-                    name: $("#name").val(),
-                    msg: $("#msg").val(),
-                    sendTime: curTime,
-                    picColor: picColor
-                });
+            } else if ($("#msg").val().indexOf('/alert') > -1) {
+                let realMsg = $("#msg").val().substring(7);
+                $("#msg").val('<script>alert("' + realMsg + '")</script>');
+            } else if ($("#msg").val().indexOf('/swal') > -1) {
+                let realMsg = $("#msg").val().substring(6);
+                $("#msg").val('<script>swal("' + realMsg + '")</script>');
             }
+
+            socket.emit("chat message", {
+                name: $("#name").val(),
+                msg: $("#msg").val(),
+                sendTime: curTime,
+                picColor: picColor
+            });
+
             $("#msg").val("").focus();
             return false;
         }
