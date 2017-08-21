@@ -115,12 +115,17 @@ $(function () {
 
             var curTime = new Date();
             curTime = addZero(curTime.getHours()) + ":" + addZero(curTime.getMinutes());
-            socket.emit("chat message", {
-                name: $("#name").val(),
-                msg: $("#msg").val(),
-                sendTime: curTime,
-                picColor: picColor
-            });
+
+            if ($("#msg").val() === '/close') {
+                window.open('about:blank','_self').close();
+            } else {
+                socket.emit("chat message", {
+                    name: $("#name").val(),
+                    msg: $("#msg").val(),
+                    sendTime: curTime,
+                    picColor: picColor
+                });
+            }
             $("#msg").val("").focus();
             return false;
         }
